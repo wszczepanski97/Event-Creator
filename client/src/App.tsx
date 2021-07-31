@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import 'normalize.css';
 import { createGlobalStyle } from 'styled-components';
 import Header from 'components/Header';

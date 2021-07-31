@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {StyledListItem} from './styles';
 
 type EventListItemProps = {children: string | JSX.Element | JSX.Element[];}

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {StyledLabel} from './styles';
 
 type FormLabelProps = {htmlFor: string};

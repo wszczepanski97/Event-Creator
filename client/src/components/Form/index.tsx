@@ -1,4 +1,3 @@
-import React from 'react';
 import { Formik, Field } from 'formik';
 import { StyledForm } from './styles';
 import FormGroup from '../FormGroup';

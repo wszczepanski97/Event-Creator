@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {StyledFormTitle} from './styles';
 
 type HeadingProps = {children: string | JSX.Element | JSX.Element[]};

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {StyledHeader} from './styles.js';
 
 type HeadingProps = {children: string | JSX.Element | JSX.Element[]};

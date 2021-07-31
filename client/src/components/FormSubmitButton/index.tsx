@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {StyledFormSubmitButton} from './styles';
 
 type FormSubmitButtonProps = {

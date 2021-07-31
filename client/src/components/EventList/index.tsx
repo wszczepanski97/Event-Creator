@@ -1,4 +1,3 @@
-import React from 'react';
 import EventListItem, {Item} from '../EventListItem';
 import {StyledEventList} from './styles';
 import EventListItemHeading from '../EventListItemHeading';

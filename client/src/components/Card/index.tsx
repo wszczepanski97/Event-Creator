@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {StyledCard} from './styles';
 import CardTitle from '../CardTitle';
 
