@@ -2,7 +2,7 @@
 
 To start dev
 ```sh
-# server runs on port 3000
+# server runs on port 3001
 npm run start:dev
 ```
 

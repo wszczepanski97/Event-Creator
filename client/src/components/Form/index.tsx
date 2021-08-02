@@ -34,8 +34,8 @@ const Form = ({handleSubmit}: FormProps ) => {
         initialValues = {initialValues}
         validationSchema={
             Yup.object({
-                firstName: Yup.string().required().min(2, 'Must be 2 characters or more').matches(/^[a-zA-Z ]+$/, "Only letters available"),
-                lastName: Yup.string().required().min(2, 'Must be 2 characters or more').matches(/^[a-zA-Z ]+$/, "Only letters available"),
+                firstName: Yup.string().required().min(2, 'Must be 2 characters or more').matches(/^[\p{L}]+$/u, "Only letters available"),
+                lastName: Yup.string().required().min(2, 'Must be 2 characters or more').matches(/^[\p{L}]+$/u, "Only letters available"),
                 email: Yup.string().email('Invalid email address').required(),
                 eventDate: Yup.string().required()
         })}
@@ -55,13 +55,13 @@ const Form = ({handleSubmit}: FormProps ) => {
             <StyledForm>
                 <FormGroup name="First Name">
                     <FormLabel htmlFor="firstName"/>
-                    <Field as={FormField} name="firstName" type="text" placeholder="First Name" onFocus={() => onFocus('firstName')} required minLength={2} pattern="^[a-zA-Z ]+$"/>
+                    <Field as={FormField} name="firstName" type="text" placeholder="First Name" onFocus={() => onFocus('firstName')} required minLength={2} pattern="^[\p{L}]+$"/>
                     <FormError name="firstName" />
                 </FormGroup>
     
                 <FormGroup name="Last Name">
                     <FormLabel htmlFor="lastName"/>
-                    <Field as={FormField} name="lastName" type="text" placeholder="Last Name" onFocus={() => onFocus('lastName')} required minLength={2} pattern="^[a-zA-Z ]+$"/>
+                    <Field as={FormField} name="lastName" type="text" placeholder="Last Name" onFocus={() => onFocus('lastName')} required minLength={2} pattern="^[\p{L}]+$"/>
                     <FormError name="lastName" />
                 </FormGroup>
     

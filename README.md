@@ -27,7 +27,6 @@ $ docker-compose -f docker-compose.yml up -d
    ```sh
    # remember to setup .env(check .env.example)
    $ cd server && yarn install
-   # check localhost:3000
 ```
 
 3. Run migrations and seeds
@@ -45,7 +44,7 @@ $ docker-compose -f docker-compose.yml up -d
 ```sh
 # remember to setup .env(check .env.example)
 $ yarn start:dev
-# check localhost:3000
+# check localhost:3001
 ```
 
 5. Install and run client
@@ -54,7 +53,7 @@ $ yarn start:dev
 # remember to setup .env(check .env.example)
 # Starting from root of project
 $ cd client && yarn install && yarn start
-# check localhost:8080(should run browser automatically)
+# check localhost:3000(should run browser automatically)
 ```
 
 # Troubleshoot

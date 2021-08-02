@@ -8,6 +8,9 @@ import {
 import { toBeInTheDocument } from "@testing-library/jest-dom";
 import Form from ".";
 import userEvent from "@testing-library/user-event";
+import Enzyme, { shallow, mount } from "enzyme";
+import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+Enzyme.configure({ adapter: new Adapter() });
 
 async function typeDesiredStringToInput(input, string) {
   const stringArray = string.split("");
@@ -101,32 +104,30 @@ describe("Form component", () => {
   test("should eventDateInput valid if valid value passed", async () => {
     render(<Form />);
     const eventDateInput = screen.getByPlaceholderText(/dd.MM.y, HH:mm/i);
-    fireEvent.change(eventDateInput, { target: { value: "2021-08-18T14:26" } });
+    await waitFor(() =>
+      fireEvent.change(eventDateInput, {
+        target: { value: "2021-08-18T14:26" },
+      })
+    );
     expect(eventDateInput).toBeValid();
   });
   test("should eventDateInput show error message if value passed and then clear", async () => {
     render(<Form />);
     const eventDateInput = screen.getByPlaceholderText(/dd.MM.y, HH:mm/i);
-    fireEvent.change(eventDateInput, { target: { value: "2021-08-18T14:26" } });
+    await waitFor(() =>
+      fireEvent.change(eventDateInput, {
+        target: { value: "2021-08-18T14:26" },
+      })
+    );
     await waitFor(() => userEvent.clear(eventDateInput));
     expect(
       screen.getByText(/eventDate is a required field/i)
     ).toBeInTheDocument();
   });
   // submit call
-  // test("should call submit if all fields are correct", async () => {
-  //   const handleSubmit = jest.fn((event) => {
-  //     event.preventDefault();
-  //     Promise.resolve({
-  //       email: "john.dee@someemail.com",
-  //       firstName: "John",
-  //       lastName: "Dee",
-  //       eventDate: "2021-08-18T14:26",
-  //     });
-  //   });
+  // test("should submit button be enabled if all fields are correct", async () => {
   //   render(<Form />, {});
-  //   const form = document.getElementsByTagName("form");
-  //   form.onSubmit = handleSubmit;
+  //   expect(screen.getByRole("button", { name: /submit/i })).toBeDisabled();
   //   userEvent.type(screen.getByPlaceholderText(/First name/i), "John");
   //   userEvent.type(screen.getByPlaceholderText(/Last name/i), "Dee");
   //   userEvent.type(
@@ -136,12 +137,33 @@ describe("Form component", () => {
   //   fireEvent.change(screen.getByPlaceholderText(/dd.MM.y, HH:mm/i), {
   //     target: { value: "2021-08-18T14:26" },
   //   });
-  //   userEvent.click(screen.getByRole("button", { name: /submit/i }));
   //   await waitFor(() =>
-  //     expect(handleSubmit).toHaveBeenCalledWith({
-  //       email: "john.dee@someemail.com",
+  //     expect(screen.getByRole("button", { name: /submit/i })).toBeEnabled()
+  //   );
+  // });
+  // // submit call
+  // test("should submit if all fields are correct", async () => {
+  //   render(<Form />, {});
+  //   expect(screen.getByRole("button", { name: /submit/i })).toBeDisabled();
+  //   userEvent.type(screen.getByPlaceholderText(/First name/i), "John");
+  //   userEvent.type(screen.getByPlaceholderText(/Last name/i), "Dee");
+  //   userEvent.type(
+  //     screen.getByPlaceholderText(/eMail/i),
+  //     "john.dee@someemail.com"
+  //   );
+  //   fireEvent.change(screen.getByPlaceholderText(/dd.MM.y, HH:mm/i), {
+  //     target: { value: "2021-08-18T14:26" },
+  //   });
+  //   const wrapper = shallow(<Form />);
+  //   wrapper.instance().onSubmit = jest.fn();
+  //   console.log(wrapper.onSubmit());
+  //   wrapper.update();
+  //   wrapper.simulate("submit");
+  //   await waitFor(() =>
+  //     expect(wrapper.onSubmit).toHaveBeenCalledWith({
   //       firstName: "John",
   //       lastName: "Dee",
+  //       email: "john.dee@someemail.com",
   //       eventDate: "2021-08-18T14:26",
   //     })
   //   );
