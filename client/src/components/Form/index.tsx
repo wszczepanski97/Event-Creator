@@ -34,8 +34,8 @@ const Form = ({handleSubmit}: FormProps ) => {
         initialValues = {initialValues}
         validationSchema={
             Yup.object({
-                firstName: Yup.string().required().min(2, 'Must be 2 characters or more'),
-                lastName: Yup.string().min(2, 'Must be 2 characters or more').required(),
+                firstName: Yup.string().required().min(2, 'Must be 2 characters or more').matches(/^[a-zA-Z ]+$/, "Only letters available"),
+                lastName: Yup.string().required().min(2, 'Must be 2 characters or more').matches(/^[a-zA-Z ]+$/, "Only letters available"),
                 email: Yup.string().email('Invalid email address').required(),
                 eventDate: Yup.string().required()
         })}
@@ -55,29 +55,29 @@ const Form = ({handleSubmit}: FormProps ) => {
             <StyledForm>
                 <FormGroup name="First Name">
                     <FormLabel htmlFor="firstName"/>
-                    <Field as={FormField} name="firstName" type="text" placeholder="First Name" onFocus={() => onFocus('firstName')} required minLength={2}/>
-                    <FormError component="span" name="firstName" />
+                    <Field as={FormField} name="firstName" type="text" placeholder="First Name" onFocus={() => onFocus('firstName')} required minLength={2} pattern="^[a-zA-Z ]+$"/>
+                    <FormError name="firstName" />
                 </FormGroup>
     
                 <FormGroup name="Last Name">
                     <FormLabel htmlFor="lastName"/>
-                    <Field as={FormField} name="lastName" type="text" placeholder="Last Name" onFocus={() => onFocus('lastName')} required minLength={2}/>
-                    <FormError component="span" name="lastName" />
+                    <Field as={FormField} name="lastName" type="text" placeholder="Last Name" onFocus={() => onFocus('lastName')} required minLength={2} pattern="^[a-zA-Z ]+$"/>
+                    <FormError name="lastName" />
                 </FormGroup>
     
                 <FormGroup name="Email Address">
                     <FormLabel htmlFor="email"/>
                     <Field as={FormField} name="email" type="email" placeholder="eMail" onFocus={() => onFocus('email')} pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
-                    <FormError component="span" name="email" />
+                    <FormError name="email" />
                 </FormGroup>
     
                 <FormGroup name="Event Date">
                     <FormLabel htmlFor="eventDate"/>
-                    <Field as={FormField} name="eventDate" type="datetime-local" onFocus={() => onFocus('eventDate')}/>
-                    <FormError component="span" name="eventDate"/>
+                    <Field as={FormField} name="eventDate" type="datetime-local" onFocus={() => onFocus('eventDate')} placeholder="dd.MM.y, HH:mm"/>
+                    <FormError name="eventDate"/>
                 </FormGroup>
     
-                <FormSubmitButton type="submit" disabled={isSubmitting || !(isValid && dirty)}>Submit</FormSubmitButton>
+                <FormSubmitButton disabled={isSubmitting || !(isValid && dirty)}>Submit</FormSubmitButton>
             </StyledForm>
           );  
         }}

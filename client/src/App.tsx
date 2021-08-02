@@ -49,7 +49,7 @@ const App = () => {
     <>
       <GlobalStyle />
       <main>
-        <Header>Events Managment Studio</Header>
+        <Header/>
         <Wrapper>
           <Card title="Add new Event">
             <Form handleSubmit={fetchEvents}/>

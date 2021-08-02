@@ -2,6 +2,6 @@ import {StyledEventListItemValue} from './styles';
 
 type EventListItemValue = {children: string | JSX.Element | JSX.Element[];};
 
-const EventListItemValue = ({children}: EventListItemValue): JSX.Element => <StyledEventListItemValue>{children}</StyledEventListItemValue>
+const EventListItem = ({children}: EventListItemValue): JSX.Element => <StyledEventListItemValue>{children}</StyledEventListItemValue>
 
-export default EventListItemValue;
+export default EventListItem;

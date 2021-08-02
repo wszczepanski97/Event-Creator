@@ -2,13 +2,12 @@ import {StyledFormSubmitButton} from './styles';
 
 type FormSubmitButtonProps = {
   children: string,
-  type: 'submit'|'reset'|'button'|undefined,
   disabled: boolean
 };
 
-const FormSubmitButton = ({ children, type, disabled }: FormSubmitButtonProps): JSX.Element => {
+const FormSubmitButton = ({ children, disabled }: FormSubmitButtonProps): JSX.Element => {
   return (
-    <StyledFormSubmitButton type={type} disabled={disabled}>{children}</StyledFormSubmitButton>
+    <StyledFormSubmitButton type="submit" disabled={disabled}>{children}</StyledFormSubmitButton>
   )
 };
 

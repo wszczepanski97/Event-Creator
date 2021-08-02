@@ -1,7 +1,7 @@
 import {StyledFormError} from './styles';
 
-export type FormErrorProps = {component:string, name:string};
+export type FormErrorProps = {name:string};
 
-const FormError = ({component, name}: FormErrorProps): JSX.Element => <StyledFormError component={component} name={name}/>;
+const FormError = ({name}: FormErrorProps): JSX.Element => <StyledFormError component="span" name={name}/>;
 
 export default FormError;
